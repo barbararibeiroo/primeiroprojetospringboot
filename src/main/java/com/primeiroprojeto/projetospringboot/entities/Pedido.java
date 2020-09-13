@@ -12,33 +12,36 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.databind.jsonFormatVisitors.JsonFormatTypes;
+import com.primeiroprojeto.projetospringboot.enums.PedidoStatus;
 
 @Entity
 @Table(name = "tb_pedido")
 public class Pedido implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss'Z'", timezone = "GMT")
 	private Instant momento;
+
+	private Integer pedidoStatus;
 
 	@ManyToOne
 	@JoinColumn(name = "cliente_Id")
 	private Usuario cliente;
 
-	public Pedido ()  {
+	public Pedido() {
 
 	}
 
-	public Pedido(Long id, Instant momento, Usuario cliente) {
+	public Pedido(Long id, Instant momento, PedidoStatus pedidoStatus, Usuario cliente) {
 		super();
 		this.id = id;
 		this.momento = momento;
+		setPedidoStatus(pedidoStatus);
 		this.cliente = cliente;
 	}
 
@@ -56,6 +59,16 @@ public class Pedido implements Serializable {
 
 	public void setMomento(Instant momento) {
 		this.momento = momento;
+	}
+
+	public PedidoStatus getPedidoStatus() {
+		return PedidoStatus.valueOf(pedidoStatus);
+	}
+
+	public void setPedidoStatus(PedidoStatus pedidoStatus) {
+		if (pedidoStatus != null) {
+			this.pedidoStatus = pedidoStatus.getCodigo();
+		}
 	}
 
 	public Usuario getCliente() {
@@ -90,7 +103,5 @@ public class Pedido implements Serializable {
 			return false;
 		return true;
 	}
-	
-	
 
 }
