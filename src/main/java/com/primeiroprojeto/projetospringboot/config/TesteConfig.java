@@ -66,6 +66,15 @@ public class TesteConfig implements CommandLineRunner {
 		usuarioRepositorio.saveAll(Arrays.asList(u1, u2));
 		pedidoRepositorio.saveAll(Arrays.asList(p1,p2,p3));
 
+		prod1.getCategorias().add(cat2);
+		prod2.getCategorias().add(cat1);
+		prod2.getCategorias().add(cat3);
+		prod3.getCategorias().add(cat3);
+		prod4.getCategorias().add(cat3);
+		prod5.getCategorias().add(cat2);
+	
+		produtoRepositorio.saveAll(Arrays.asList(prod1,prod2,prod3,prod4,prod5));
+	
 	}
 
 }
