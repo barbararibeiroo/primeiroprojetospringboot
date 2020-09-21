@@ -6,6 +6,7 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.primeiroprojeto.projetospringboot.pk.ItemPedidoPk;
 
 @Entity
@@ -15,7 +16,7 @@ public class ItemPedido implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@EmbeddedId
-	private ItemPedidoPk id;
+	private ItemPedidoPk id = new ItemPedidoPk();
 
 	private Integer quantidade;
 	private Double preco;
@@ -31,7 +32,7 @@ public class ItemPedido implements Serializable {
 		this.quantidade = quantidade;
 		this.preco = preco;
 	}
-
+	@JsonIgnore
 	public Pedido getPedido() {
 		return id.getPedido();
 	}
