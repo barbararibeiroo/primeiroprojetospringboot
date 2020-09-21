@@ -1,5 +1,7 @@
 package com.primeiroprojeto.projetospringboot.pk;
 
+
+
 import java.io.Serializable;
 
 import javax.persistence.Embeddable;
@@ -22,6 +24,7 @@ public class ItemPedidoPk implements Serializable{
 	@JoinColumn(name = "produto_id")
 	private Produto produto;
 
+	
 	public Pedido getPedido() {
 		return pedido;
 	}
@@ -29,7 +32,7 @@ public class ItemPedidoPk implements Serializable{
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}
-
+	
 	public Produto getProduto() {
 		return produto;
 	}
