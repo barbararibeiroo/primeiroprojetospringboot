@@ -15,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "tb_produto")
 public class Produto implements Serializable{
@@ -90,7 +92,7 @@ public class Produto implements Serializable{
 	public Set<Categoria> getCategorias() {
 		return categorias;
 	}
-	
+	@JsonIgnore
 	public Set<Pedido> getPedidos(){
 		Set<Pedido> set = new HashSet<>();
 		for(ItemPedido x : items){
