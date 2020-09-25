@@ -1,45 +1,42 @@
 package com.primeiroprojeto.projetospringboot.entities;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.time.Instant;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.MapsId;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-@Table(name = "tb_usuario")
-public class Usuario implements Serializable {
+@Table(name = "tb_pagamento")
+public class Pagamento implements Serializable {
+
 
 	private static final long serialVersionUID = 1L;
+	
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private String email;
-	private String telefone;
-	private String senha;
-	
-	@JsonIgnore
-	@OneToMany (mappedBy = "cliente")
-	private List<Pedido> pedidos = new ArrayList<>();
+	private Instant momento;
 
-	public Usuario() {
+	@OneToOne
+	@MapsId
+	private Pedido pedido;
+
+	public Pagamento() {
 
 	}
 
-	public Usuario(Long id, String email, String telefone, String senha) {
+	public Pagamento(Long id, Instant momento, Pedido pedido) {
 		super();
 		this.id = id;
-		this.email = email;
-		this.telefone = telefone;
-		this.senha = senha;
+		this.momento = momento;
+		this.pedido = pedido;
 	}
 
 	public Long getId() {
@@ -50,32 +47,20 @@ public class Usuario implements Serializable {
 		this.id = id;
 	}
 
-	public String getEmail() {
-		return email;
+	public Instant getMomento() {
+		return momento;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setMomento(Instant momento) {
+		this.momento = momento;
 	}
 
-	public String getTelefone() {
-		return telefone;
+	public Pedido getPedido() {
+		return pedido;
 	}
 
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
-	
-	public List<Pedido> getPedidos() {
-		return pedidos;
+	public void setPedido(Pedido pedido) {
+		this.pedido = pedido;
 	}
 
 	@Override
@@ -94,7 +79,7 @@ public class Usuario implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Usuario other = (Usuario) obj;
+		Pagamento other = (Pagamento) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -103,6 +88,4 @@ public class Usuario implements Serializable {
 		return true;
 	}
 
-
-	
 }

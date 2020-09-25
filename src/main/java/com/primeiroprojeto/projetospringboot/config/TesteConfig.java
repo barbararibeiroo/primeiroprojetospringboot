@@ -10,6 +10,7 @@ import org.springframework.context.annotation.Profile;
 
 import com.primeiroprojeto.projetospringboot.entities.Categoria;
 import com.primeiroprojeto.projetospringboot.entities.ItemPedido;
+import com.primeiroprojeto.projetospringboot.entities.Pagamento;
 import com.primeiroprojeto.projetospringboot.entities.Pedido;
 import com.primeiroprojeto.projetospringboot.entities.Produto;
 import com.primeiroprojeto.projetospringboot.entities.Usuario;
@@ -39,6 +40,8 @@ public class TesteConfig implements CommandLineRunner {
 	
 	@Autowired
 	private ItemPedidoRepositorio itemPedidoRepositorio;
+	
+
 	
 	@Override
 	public void run(String... args) throws Exception {
@@ -86,7 +89,14 @@ public class TesteConfig implements CommandLineRunner {
 		ItemPedido ip4 = new ItemPedido(p3, prod5, 2, prod5.getPreco());
 
 		itemPedidoRepositorio.saveAll(Arrays.asList(ip1, ip2, ip3, ip4));
+		
+		Pagamento pag1 = new Pagamento(null, Instant.parse("2019-06-20T21:53:07Z"), p1); 
 	
+
+		p1.setPagamento(pag1);
+		
+		pedidoRepositorio.save(p1);
+		
 	}
 
 }
