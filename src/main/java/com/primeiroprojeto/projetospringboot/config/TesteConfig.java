@@ -53,7 +53,7 @@ public class TesteConfig implements CommandLineRunner {
 		Produto prod1 = new Produto(null,"The Lord of the Rings", "Lorem ipsum dolor sit amet, consectetur.", 90.5, "");
 		Produto prod2 = new Produto (null,"Smart TV", "Nulla eu imperdiet purus. Maecenas ante.", 2190.0, "");
 		Produto prod3 = new Produto (null,"Macbook Pro", "Nam eleifend maximus tortor, at mollis.", 1250.0, "");
-		Produto prod4 = new Produto(null,"PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1200.0, "");
+		Produto prod4 = new Produto(null,"PC Gamer", "Donec aliquet odio ac rhoncus cursus.", 1250.0, "");
 		Produto prod5 = new Produto (null,"Rails for Dummies", "Cras fringilla convallis sem vel faucibus.", 100.99, "");
 		
 		
