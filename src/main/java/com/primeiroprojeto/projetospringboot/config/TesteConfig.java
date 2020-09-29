@@ -61,8 +61,8 @@ public class TesteConfig implements CommandLineRunner {
 		categoriaRepositorio.saveAll(Arrays.asList(cat1,cat2,cat3));
 		produtoRepositorio.saveAll(Arrays.asList(prod1,prod2,prod3,prod4,prod5));
 		
-		Usuario u1 = new Usuario(null, "marioroberto@gmail.com", "26744172", "123456");
-		Usuario u2 = new Usuario(null, "creusaoliveira@hotmail.com", "26720444", "654321");
+		Usuario u1 = new Usuario(null, "Mario Roberto", "marioroberto@gmail.com", "26744172", "123456");
+		Usuario u2 = new Usuario(null, "Creusa Oliveira", "creusaoliveira@hotmail.com", "26720444", "654321");
 
 		
 		Pedido p1 = new Pedido(null, Instant.parse("2019-06-20T19:53:07Z"), PedidoStatus.PAGO, u1);
