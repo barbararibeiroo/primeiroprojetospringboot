@@ -51,7 +51,6 @@ public class UsuarioServico {
 			updateData(entity, obj);
 			return usuarioRepositorio.save(entity);
 		} catch (EntityNotFoundException e) {
-
 			throw new ResourceNotFoundException(id);
 		}
 	}
